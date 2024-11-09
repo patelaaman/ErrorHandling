@@ -5,7 +5,7 @@ const cors = require("cors");
 
 const dotenv = require("dotenv").config();
 const port = process.env.PORT || 3000
-//const ErrorHandler = require("./middleware/errorHandler")
+const ErrorHandler = require("./middleware/errorHandler")
 // Body-parser middleware
 app.use(bodyparser.urlencoded({ extended: true }))
 app.use(bodyparser.json())
@@ -36,7 +36,7 @@ app.get("/service",(req,res,next)=>{
     
     const err  = new Error("ye Servie ka Error message Hai!!");
     next(err)
-})
+})  
 
 app.get("/join",(req,res)=>{
       res.send("My Join  Page")
@@ -46,7 +46,7 @@ app.get("/cont",(req,res,next)=>{
     const errr = new Error("Ye Contect page ki errhai");
        next(errr)
 })
-//app.use(ErrorHandler)
+app.use(ErrorHandler)
 app.listen(port ,()=>{
     console.log(`Server Run  On Port ${port}`)
 })
